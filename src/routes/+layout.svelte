@@ -6,6 +6,6 @@
   <title>CAPTCHA Game</title>
 </svelte:head>
 
-<div class="h-screen">
+<div class="min-h-screen bg-neutral-200 p-32">
   <slot />
 </div>

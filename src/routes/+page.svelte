@@ -1,10 +1,12 @@
 <script lang="ts">
   import "iconify-icon";
-  import { slide } from "svelte/transition";
+  import { fade, slide } from "svelte/transition";
+  import Captcha from "$components/CAPTCHA.svelte";
 
   let formLoading = false;
   let formDisabled = false;
-  let captcha = false;
+  let formCaptcha = true;
+  let captcha = true;
 
   function submitForm() {
     formLoading = true;
@@ -12,12 +14,12 @@
 
     setTimeout(() => {
       formLoading = false;
-      captcha = true;
+      formCaptcha = true;
     }, 4000);
   }
 </script>
 
-<div class="flex justify-center items-center h-full bg-neutral-200">
+<div class="flex justify-center items-center h-full">
   <main class="bg-white shadow-lg p-8 rounded-md w-1/2 space-y-8">
     <h1 class="text-xl font-bold">Create a new account</h1>
     <hr>
@@ -57,14 +59,20 @@
 
       <br>
 
-      {#if captcha}
+      {#if formCaptcha}
         <div
-          class="border-neutral-200 bg-neutral-100 border rounded-sm shadow-md p-6 flex items-center gap-4"
+          class="border-neutral-200 bg-neutral-100 border rounded-sm shadow-md p-6 relative"
           transition:slide={{ duration: 500 }}>
-          <button
-            class="border-2 border-neutral-400 w-8 h-8 rounded-sm bg-white"
-            on:click|preventDefault></button>
-          <span class="font-semibold">I'm not a robot</span>
+          <label class="font-semibold flex items-center gap-4">
+            <button
+              class="border-2 border-neutral-400 w-8 h-8 rounded-sm bg-white"
+              on:click|preventDefault={() => captcha = true}></button>
+            <span>I'm not a robot</span>
+          </label>
+
+          {#if captcha}
+            <Captcha />
+          {/if}
         </div>
       {/if}
 
