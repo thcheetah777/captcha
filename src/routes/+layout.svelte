@@ -2,4 +2,10 @@
   import "../global.css";
 </script>
 
-<slot />
+<svelte:head>
+  <title>CAPTCHA Game</title>
+</svelte:head>
+
+<div class="h-screen">
+  <slot />
+</div>
