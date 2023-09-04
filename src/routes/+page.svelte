@@ -61,7 +61,9 @@
         <div
           class="border-neutral-200 bg-neutral-100 border rounded-sm shadow-md p-6 flex items-center gap-4"
           transition:slide={{ duration: 500 }}>
-          <button class="border-2 border-neutral-400 w-8 h-8 rounded-sm bg-white" on:click|preventDefault></button>
+          <button
+            class="border-2 border-neutral-400 w-8 h-8 rounded-sm bg-white"
+            on:click|preventDefault></button>
           <span class="font-semibold">I'm not a robot</span>
         </div>
       {/if}
